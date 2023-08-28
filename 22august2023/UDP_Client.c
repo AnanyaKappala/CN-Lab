@@ -31,7 +31,8 @@
     their_addr.sin_addr.s_addr = inet_addr("127.0.0.1");
     // memset(their_addr.sin_zero, '\0', sizeof their_addr.sin_zero);
     printf("Enter a message\n");
-    gets(arg);
+    fgets(arg,sizeof(arg),stdin);
+    arg[strlen(arg)-1]='\0';
     if ((numbytes = sendto(sockfd, arg, strlen(arg), 0,
                            (struct sockaddr *)&their_addr, sizeof their_addr)) == -1)
     {
